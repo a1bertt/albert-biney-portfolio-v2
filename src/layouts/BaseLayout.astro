@@ -8,6 +8,10 @@ const {
 } = Astro.props;
 
 const resolvedOgImage = ogImage ? new URL(ogImage, Astro.site ?? Astro.url).toString() : undefined;
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isStills = currentPath === "/" || currentPath.startsWith("/work/");
+const isMovingImages = currentPath === "/moving-images" || currentPath.startsWith("/moving-images/");
+const isInfo = currentPath === "/info";
 ---
 
 <!doctype html>
@@ -24,17 +28,19 @@ const resolvedOgImage = ogImage ? new URL(ogImage, Astro.site ?? Astro.url).toSt
   </head>
 
   <body>
-    <header class="site-header">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <aside class="site-sidebar" aria-label="Site navigation">
       <a href="/" class="site-name">ALBERT BINEY</a>
 
       <nav class="site-nav" aria-label="Main navigation">
-        <a href="/">STILLS</a>
-        <a href="/moving-images">MOVING IMAGES</a>
-        <a href="/info">INFO</a>
+        <a href="/" aria-current={isStills ? "page" : undefined}>STILLS</a>
+        <a href="/moving-images" aria-current={isMovingImages ? "page" : undefined}>MOVING IMAGES</a>
+        <a href="/info" aria-current={isInfo ? "page" : undefined}>INFO</a>
       </nav>
-    </header>
+    </aside>
 
-    <main class="page-content">
+    <main id="main-content" class="page-content">
       <slot />
     </main>
   </body>
