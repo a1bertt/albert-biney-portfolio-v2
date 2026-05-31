@@ -13,7 +13,6 @@ const projects = defineCollection({
     category: z.enum(["stills", "moving-image"]),
     sortOrder: z.number(),
     coverImage: z.string(),
-    featured: z.boolean(),
     client: z.string().optional(),
     credits: z
       .array(
@@ -24,8 +23,20 @@ const projects = defineCollection({
       )
       .optional(),
     images: z.array(z.string()),
-    description: z.string().optional(),
-    ogImage: z.string().optional(),
+    videos: z
+      .array(
+        z.object({
+          title: z.string().optional(),
+          streamUrl: z.string(),
+          posterImage: z.string().optional(),
+        })
+      )
+      .optional(),
+    seo: z.object({
+      title: z.string(),
+      description: z.string(),
+      ogImage: z.string(),
+    }),
   }),
 });
 

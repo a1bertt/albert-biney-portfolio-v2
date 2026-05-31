@@ -3,6 +3,18 @@ export type Credit = {
   name: string;
 };
 
+export type Video = {
+  title?: string;
+  streamUrl: string;
+  posterImage?: string;
+};
+
+export type Seo = {
+  title: string;
+  description: string;
+  ogImage: string;
+};
+
 export type Project = {
   title: string;
   slug: string;
@@ -14,15 +26,13 @@ export type Project = {
 
   coverImage: string;
 
-  featured: boolean;
-
   client?: string;
 
   credits?: Credit[];
 
   images: string[];
 
-  description?: string;
+  videos?: Video[];
 
-  ogImage?: string;
+  seo: Seo;
 };

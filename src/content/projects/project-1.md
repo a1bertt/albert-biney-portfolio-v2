@@ -10,11 +10,14 @@ sortOrder: 1
 
 coverImage: "/images/project-1-cover.jpg"
 
-featured: true
-
 images:
   - "/images/project-1-1.jpg"
   - "/images/project-1-2.jpg"
+
+seo:
+  title: "Project One | Albert Biney"
+  description: "A placeholder stills project for the Albert Biney portfolio."
+  ogImage: "/images/project-1-cover.jpg"
 ---
 
 Placeholder project.
