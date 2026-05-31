@@ -1,0 +1,169 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const portraitImage = "/images/info-portrait-placeholder.svg";
+const email = "hello@albertbiney.com";
+const instagramUrl = "https://www.instagram.com/albertbiney/";
+const youtubeUrl = "https://www.youtube.com/@albertbiney";
+---
+
+<BaseLayout
+  title="Info | Albert Biney"
+  description="Biography, contact, and professional context for photographer Albert Biney."
+>
+  <section class="info-page" aria-labelledby="info-title">
+    <figure class="info-portrait">
+      <img src={portraitImage} alt="Portrait placeholder for Albert Biney" loading="eager" />
+    </figure>
+
+    <div class="info-content">
+      <div class="info-bio">
+        <p class="info-kicker">INFO</p>
+        <h1 id="info-title">Albert Biney</h1>
+        <p>
+          Albert Biney is a photographer working across film and digital, with a focus on portraiture,
+          fashion, and moving image.
+        </p>
+        <p>
+          His work is shaped by stillness, everyday spaces, controlled composition, and a precise use of
+          light and texture.
+        </p>
+      </div>
+
+      <dl class="info-details" aria-label="Contact details">
+        <div>
+          <dt>Location</dt>
+          <dd>London, United Kingdom</dd>
+        </div>
+        <div>
+          <dt>Availability</dt>
+          <dd>Available for editorial, fashion, portrait, and moving-image commissions.</dd>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd><a href={`mailto:${email}`}>{email}</a></dd>
+        </div>
+        <div>
+          <dt>Instagram</dt>
+          <dd><a href={instagramUrl}>@albertbiney</a></dd>
+        </div>
+        <div>
+          <dt>YouTube</dt>
+          <dd><a href={youtubeUrl}>@albertbiney</a></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .info-page {
+    display: grid;
+    grid-template-columns: minmax(240px, 0.78fr) minmax(320px, 1fr);
+    gap: clamp(48px, 8vw, 128px);
+    align-items: start;
+    max-width: 1180px;
+    padding: clamp(40px, 6vw, 88px) var(--layout-page-x) clamp(72px, 10vw, 144px);
+  }
+
+  .info-portrait {
+    margin: clamp(48px, 8vw, 104px) 0 0;
+  }
+
+  .info-portrait img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    background: var(--color-muted);
+  }
+
+  .info-content {
+    display: grid;
+    gap: clamp(40px, 6vw, 80px);
+    max-width: 620px;
+  }
+
+  .info-kicker {
+    margin: 0 0 var(--space-5);
+    color: var(--muted);
+    font-size: var(--type-nav-size);
+    letter-spacing: var(--type-letter-spaced);
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .info-bio h1 {
+    margin: 0 0 var(--space-6);
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .info-bio p {
+    max-width: 560px;
+    margin: 0 0 var(--space-5);
+    font-size: clamp(18px, 2vw, 24px);
+    line-height: 1.35;
+  }
+
+  .info-bio p:last-child {
+    margin-bottom: 0;
+  }
+
+  .info-details {
+    display: grid;
+    gap: var(--space-4);
+    margin: 0;
+    max-width: 560px;
+  }
+
+  .info-details div {
+    display: grid;
+    grid-template-columns: minmax(96px, 0.32fr) 1fr;
+    gap: var(--space-5);
+  }
+
+  .info-details dt,
+  .info-details dd {
+    margin: 0;
+  }
+
+  .info-details dt {
+    color: var(--muted);
+    font-size: var(--type-nav-size);
+    letter-spacing: var(--type-letter-spaced);
+    text-transform: uppercase;
+  }
+
+  .info-details a {
+    transition: color var(--motion-fast);
+  }
+
+  .info-details a:hover {
+    color: var(--muted);
+  }
+
+  @media (max-width: 900px) {
+    .info-page {
+      grid-template-columns: 1fr;
+      gap: var(--space-7);
+    }
+
+    .info-portrait {
+      max-width: 520px;
+      margin-top: 0;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .info-page {
+      padding-top: var(--space-5);
+    }
+
+    .info-details div {
+      grid-template-columns: 1fr;
+      gap: var(--space-1);
+    }
+  }
+</style>

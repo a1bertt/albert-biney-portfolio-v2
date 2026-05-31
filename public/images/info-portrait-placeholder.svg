@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+  <title id="title">Portrait placeholder</title>
+  <desc id="desc">Neutral placeholder for the Albert Biney information page portrait.</desc>
+  <rect width="1200" height="1500" fill="#dedbd4"/>
+  <rect x="72" y="72" width="1056" height="1356" fill="none" stroke="#c7c2b8" stroke-width="2"/>
+  <circle cx="600" cy="610" r="168" fill="#c7c2b8"/>
+  <path d="M332 1108c36-184 168-292 268-292s232 108 268 292" fill="#c7c2b8"/>
+</svg>

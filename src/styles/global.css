@@ -33,6 +33,9 @@
   --sidebar-background: var(--color-background);
   --sidebar-text: var(--color-text);
   --sidebar-muted: var(--color-muted);
+  --sidebar-identity-size: 16px;
+  --sidebar-nav-size: 15.5px;
+  --sidebar-line-height: 1.22;
 
   --type-nav-size: 12px;
   --type-body-size: 15px;
@@ -111,13 +114,13 @@ video {
   overflow-y: auto;
   background: var(--sidebar-background);
   color: var(--sidebar-text);
-  font-size: var(--type-nav-size);
   letter-spacing: var(--type-letter-spaced);
-  line-height: 1.2;
+  line-height: var(--sidebar-line-height);
   text-transform: uppercase;
 }
 
 .site-name {
+  font-size: var(--sidebar-identity-size);
   font-weight: 600;
 }
 
@@ -126,6 +129,7 @@ video {
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-3);
+  font-size: var(--sidebar-nav-size);
 }
 
 .site-sidebar a {
