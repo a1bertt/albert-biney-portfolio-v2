@@ -10,7 +10,7 @@ const projects = (await getCollection("projects", ({ data }) => data.category ==
     return {
       project,
       previewImage: video?.posterImage ?? project.data.coverImage,
-      videoUrl: video?.streamUrl,
+      videoUrl: video?.previewUrl ?? video?.fullVideoUrl,
     };
   });
 ---

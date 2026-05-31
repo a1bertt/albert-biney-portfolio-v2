@@ -13,7 +13,10 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { title, year, client, credits, images, videos } = project.data;
-const primaryVideo = videos?.[0]?.streamUrl;
+const primaryVideo = videos?.[0];
+const embedUrl = primaryVideo?.streamUrl;
+const videoUrl = primaryVideo?.fullVideoUrl ?? primaryVideo?.previewUrl;
+const posterImage = primaryVideo?.posterImage;
 ---
 
 <BaseLayout title={`${title} | Albert Biney`}>
@@ -38,15 +41,23 @@ const primaryVideo = videos?.[0]?.streamUrl;
       )}
     </header>
 
-    {primaryVideo && (
+    {embedUrl && (
       <div class="project-video">
         <iframe
-          src={primaryVideo}
-          title={`${title} video`}
+          src={embedUrl}
+          title={primaryVideo?.title ?? `${title} video`}
           loading="lazy"
           allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
           allowfullscreen
         ></iframe>
+      </div>
+    )}
+
+    {!embedUrl && videoUrl && (
+      <div class="project-video">
+        <video controls playsinline preload="metadata" poster={posterImage}>
+          <source src={videoUrl} />
+        </video>
       </div>
     )}
 
@@ -106,7 +117,8 @@ const primaryVideo = videos?.[0]?.streamUrl;
     margin-bottom: 32px;
   }
 
-  .project-video iframe {
+  .project-video iframe,
+  .project-video video {
     display: block;
     width: 100%;
     aspect-ratio: 16 / 9;

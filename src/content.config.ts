@@ -1,6 +1,8 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
+const remoteUrl = z.string().url();
+
 const projects = defineCollection({
   loader: glob({
     pattern: "**/*.{md,mdx}",
@@ -12,7 +14,7 @@ const projects = defineCollection({
     year: z.string(),
     category: z.enum(["stills", "moving-image"]),
     sortOrder: z.number(),
-    coverImage: z.string(),
+    coverImage: remoteUrl,
     client: z.string().optional(),
     credits: z
       .array(
@@ -22,20 +24,22 @@ const projects = defineCollection({
         })
       )
       .optional(),
-    images: z.array(z.string()),
+    images: z.array(remoteUrl),
     videos: z
       .array(
         z.object({
           title: z.string().optional(),
-          streamUrl: z.string(),
-          posterImage: z.string().optional(),
+          previewUrl: remoteUrl.optional(),
+          fullVideoUrl: remoteUrl.optional(),
+          streamUrl: remoteUrl.optional(),
+          posterImage: remoteUrl.optional(),
         })
       )
       .optional(),
     seo: z.object({
       title: z.string(),
       description: z.string(),
-      ogImage: z.string(),
+      ogImage: remoteUrl,
     }),
   }),
 });
