@@ -19,7 +19,7 @@ Do not add Tailwind CSS. Do not introduce utility-first CSS frameworks, componen
 ## Repo Structure
 
 - `src/pages/` contains route files.
-- `src/layouts/BaseLayout.astro` contains the shared page shell, metadata defaults, and main navigation.
+- `src/layouts/BaseLayout.astro` contains the shared page shell, metadata defaults, fixed left-side navigation, and main content frame.
 - `src/content.config.ts` defines Astro content collections.
 - `src/content/projects/` contains project entries as Markdown or MDX.
 - `src/styles/` contains global styling and design tokens.
@@ -41,6 +41,16 @@ Maintain these public routes:
 
 Keep navigation labels concise and uppercase: `STILLS`, `MOVING IMAGES`, `INFO`.
 
+## Layout Direction
+
+Use a fixed left-side vertical navigation system, similar in structure to the Aitor Sola reference. Do not use a top horizontal navbar.
+
+`ALBERT BINEY` should sit at the top left as the site identity. The primary page links should sit vertically below the identity on the left side. Social or contact links may sit near the lower left when useful.
+
+Main page content scrolls vertically to the right of the fixed sidebar. STILLS, MOVING IMAGES, INFO, stills project pages, and moving-image project pages should all sit within this same fixed-sidebar layout system.
+
+STILLS remains the homepage. MOVING IMAGES should follow the same page/index logic as STILLS, using collection-derived project entries and intentional sequencing rather than a separate hard-coded page structure.
+
 ## Content Rules
 
 Use Astro content collections for project data. Project content belongs in Markdown or MDX files under `src/content/projects/`, validated by `src/content.config.ts`.
@@ -54,6 +64,8 @@ Use `sortOrder` to control project sequencing and homepage rhythm. Lower numbers
 ## Visual Direction
 
 The visual language is minimal, editorial, restrained, and image-first. Borrow from gallery walls, contact sheets, and printed lookbooks rather than startup landing pages or generic portfolio templates.
+
+The fixed sidebar should behave as a quiet frame for the work. It should feel precise and stable, not like a decorative brand panel.
 
 Avoid:
 

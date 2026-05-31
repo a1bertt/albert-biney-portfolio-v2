@@ -83,6 +83,8 @@ Typography revised to Proxima Nova as primary and Cormorant Garamond as restrain
 
 Navigation revised to STILLS, MOVING IMAGES, INFO.
 
+Layout direction revised to use a fixed left-side vertical navigation system with ALBERT BINEY at the top left, vertical page links below, optional lower-left social/contact links, and vertically scrolling content to the right.
+
 Project pages revised to include title, year, image sequence, optional client, and optional credits.
 
 Content model extended to include sortOrder, SEO metadata, Cloudflare image URLs, and optional video records.
@@ -101,7 +103,7 @@ SEO and metadata strategy added for site-wide and project-level sharing.
 
 Albert Biney Portfolio Platform V1 is a premium editorial photography website for a photographer working across film and digital, with an emphasis on portraiture, fashion, stillness, everyday spaces, texture, light, and controlled composition. The website is designed as a visual calling card rather than a conventional agency brochure. It should communicate seriousness, taste, and visual confidence through restraint.
 
-The V1 website is organised around three public navigation items: STILLS, MOVING IMAGES, and INFO. The STILLS page is also the homepage. It functions as the primary project index and the principal visual statement. The MOVING IMAGES page supports film and video work through autoplaying muted loops and project entry points. The INFO page contains the photographer portrait, concise biography, location, availability, representation status when present, contact details, and social links.
+The V1 website is organised around a fixed left-side vertical navigation system and three public navigation items: STILLS, MOVING IMAGES, and INFO. The STILLS page is also the homepage. It functions as the primary project index and the principal visual statement. The MOVING IMAGES page follows the same index logic as STILLS while supporting film and video work through autoplaying muted loops and project entry points. The INFO page contains the photographer portrait, concise biography, location, availability, representation status when present, contact details, and social links within the same fixed-sidebar layout system.
 
 The website should feel like a gallery wall, a campaign contact sheet stripped to essentials, and a printed lookbook translated into a digital environment. It should avoid startup styling, generic agency templates, decorative animations, faux-luxury effects, and over-explained creative language.
 
@@ -178,6 +180,8 @@ The site loads quickly despite image-led presentation.
 The homepage immediately communicates a serious editorial photography identity.
 
 Navigation is simple enough to understand without instruction.
+
+Navigation remains fixed on the left on desktop, with ALBERT BINEY at the top left and page links stacked vertically below.
 
 Each stills project can be entered from the homepage/STILLS index.
 
@@ -263,7 +267,17 @@ The site architecture is intentionally minimal. The homepage is not a separate m
 
 10. Navigation System
 
-Navigation should be fixed or visually stable while the user scrolls. It should feel like a quiet framing device, not a branded header. The navigation should use uppercase labels and sharp spacing.
+Navigation should use a fixed left-side vertical system, similar in layout logic to the Aitor Sola reference. It should feel like a quiet framing device, not a branded header.
+
+ALBERT BINEY should sit at the top left as the site identity.
+
+Primary page links should sit vertically on the left side below the identity.
+
+Navigation labels should remain concise and uppercase: STILLS, MOVING IMAGES, INFO.
+
+Social or contact links may sit near the lower left when useful, provided they remain understated and do not compete with the main page links.
+
+Do not use a top horizontal navbar in V1. The fixed sidebar is the shared navigation model for STILLS, MOVING IMAGES, INFO, stills project pages, and moving-image project pages.
 
 11. Typography System
 
@@ -297,7 +311,11 @@ No brand colour beyond black, white/off-white, and subtle grey.
 
 13. Layout and Grid System
 
-The layout should appear freeform but be governed by a hidden grid. The goal is editorial asymmetry with discipline. The grid should support varied image sizes, portrait and landscape crops, and intentional gaps without becoming a simple masonry wall.
+The site uses a fixed left sidebar and a vertically scrolling main content area to its right. The sidebar remains stable while the main content scrolls.
+
+The main content layout should appear freeform but be governed by a hidden grid. The goal is editorial asymmetry with discipline. The grid should support varied image sizes, portrait and landscape crops, and intentional gaps without becoming a simple masonry wall.
+
+STILLS, MOVING IMAGES, INFO, and project detail pages should all use the same overall sidebar-and-content layout system. Individual pages may vary their internal content grid, but the navigation frame should remain consistent.
 
 13.1 Spacing Scale
 
@@ -349,7 +367,9 @@ Client and credits should never show as empty labels. If the project has no clie
 
 16. Moving Images Specification
 
-The MOVING IMAGES page is a film/video index. It should feel connected to the stills experience but introduce motion through autoplaying video previews. The page should remain minimal and restrained.
+The MOVING IMAGES page is a film/video index. It should follow the same page/index logic as STILLS: collection-derived project entries, intentional sequencing through sort order, project cards or previews that link into detail pages, and no hard-coded project list where content collections can provide the data.
+
+It should feel connected to the stills experience but introduce motion through autoplaying muted video previews. The page should remain minimal and restrained.
 
 16.1 Moving Image Project Pages
 
@@ -358,6 +378,8 @@ Moving image project pages should follow the same restraint as stills project pa
 17. INFO Page Specification
 
 The INFO page replaces a conventional ABOUT or CONTACT page. It should provide identity, contact, and professional context without breaking the minimal visual world.
+
+INFO should sit within the same fixed-sidebar layout system as the work pages. It should not introduce a separate top navigation or a different shell.
 
 17.1 Suggested INFO Copy
 
@@ -389,7 +411,7 @@ No oversized cursor systems.
 
 Desktop carries the primary aesthetic, but mobile must be elegant and usable. The mobile version should simplify layout rather than trying to reproduce desktop asymmetry at all costs.
 
-Navigation remains simple and visible.
+Navigation remains simple and visible. On narrow screens, preserve the left-navigation hierarchy as much as practical, but adapt the fixed sidebar responsibly if viewport width makes the desktop layout unusable.
 
 Project layout becomes vertically stacked or simplified.
 
@@ -539,7 +561,7 @@ Commit base project structure.
 
 Create initial project data with placeholder Cloudflare URLs or temporary placeholders.
 
-Build FixedHeader, STILLS grid, ProjectCard, and INFO page.
+Build FixedSidebar, STILLS grid, ProjectCard, and INFO page.
 
 Add project page routes and image sequence rendering.
 
@@ -595,7 +617,18 @@ Initial still images and video samples prepared for upload.
 
 32.3 Final V1 Navigation
 
+The final V1 navigation uses a fixed left-side vertical sidebar.
+
+ALBERT BINEY sits at the top left.
+
+STILLS, MOVING IMAGES, and INFO sit vertically below the identity.
+
+Optional social/contact links may sit near the lower left.
+
+Main content scrolls vertically to the right of the sidebar.
+
+No top horizontal navbar should be used.
+
 32.4 Final V1 Summary
 
-Albert Biney Portfolio Platform V1 is a minimal, editorial, image-first photography portfolio. It uses STILLS as the homepage, MOVING IMAGES as a video index, and INFO as the photographer information and contact page. The system is built with Astro, TypeScript, custom CSS, GitHub Pages, Cloudflare Images, Cloudflare Stream, and Cloudflare DNS/CDN. It is designed to launch cleanly, remain easy to maintain, and scale into Vault, archive, CMS, and advanced media features later.
-
+Albert Biney Portfolio Platform V1 is a minimal, editorial, image-first photography portfolio. It uses a fixed left-side vertical navigation system, STILLS as the homepage, MOVING IMAGES as a video index following the same index logic as STILLS, and INFO as the photographer information and contact page. The system is built with Astro, TypeScript, custom CSS, GitHub Pages, Cloudflare Images, Cloudflare Stream, and Cloudflare DNS/CDN. It is designed to launch cleanly, remain easy to maintain, and scale into Vault, archive, CMS, and advanced media features later.
