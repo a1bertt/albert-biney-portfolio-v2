@@ -1,0 +1,34 @@
+---
+import "../styles/global.css";
+
+const {
+  title = "Albert Biney",
+  description = "Photographer working across film and digital, focusing on portraiture and fashion.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a href="/" class="site-name">ALBERT BINEY</a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/">STILLS</a>
+        <a href="/moving-images">MOVING IMAGES</a>
+        <a href="/info">INFO</a>
+      </nav>
+    </header>
+
+    <main class="page-content">
+      <slot />
+    </main>
+  </body>
+</html>
