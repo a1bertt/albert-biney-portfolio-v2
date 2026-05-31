@@ -4,16 +4,23 @@ import "../styles/global.css";
 const {
   title = "Albert Biney",
   description = "Photographer working across film and digital, focusing on portraiture and fashion.",
+  ogImage,
 } = Astro.props;
+
+const resolvedOgImage = ogImage ? new URL(ogImage, Astro.site ?? Astro.url).toString() : undefined;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {resolvedOgImage && <meta property="og:image" content={resolvedOgImage} />}
   </head>
 
   <body>

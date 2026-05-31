@@ -1,9 +1,115 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const projects = (await getCollection("projects", ({ data }) => data.category === "stills")).sort(
+  (a, b) => a.data.sortOrder - b.data.sortOrder
+);
 ---
 
 <BaseLayout title="Albert Biney">
-  <section style="padding: 40px 32px;">
-    <p>STILLS page coming soon.</p>
+  <section class="stills-index" aria-label="Stills projects">
+    {
+      projects.map((project) => (
+        <a class="project-card" href={`/work/${project.data.slug}`} aria-label={`View ${project.data.title}`}>
+          <img src={project.data.coverImage} alt={project.data.title} loading="lazy" />
+          <span class="project-card__title">{project.data.title}</span>
+        </a>
+      ))
+    }
   </section>
 </BaseLayout>
+
+<style>
+  .stills-index {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-6);
+    padding: var(--space-6) var(--layout-page-x) var(--space-8);
+  }
+
+  .project-card {
+    position: relative;
+    grid-column: span 4;
+    display: block;
+    overflow: hidden;
+    background: var(--color-text);
+  }
+
+  .project-card:nth-child(4n + 1) {
+    grid-column: span 5;
+  }
+
+  .project-card:nth-child(4n + 2) {
+    grid-column: span 3;
+    align-self: end;
+  }
+
+  .project-card:nth-child(4n + 3) {
+    grid-column: span 4;
+    margin-top: var(--space-7);
+  }
+
+  .project-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    transition: opacity var(--motion-fast);
+  }
+
+  .project-card::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background: rgba(0, 0, 0, 0.34);
+    opacity: 0;
+    transition: opacity var(--motion-fast);
+  }
+
+  .project-card__title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    color: #ffffff;
+    font-size: var(--type-nav-size);
+    letter-spacing: var(--type-letter-spaced);
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity var(--motion-fast);
+  }
+
+  .project-card:hover::after,
+  .project-card:focus-visible::after,
+  .project-card:hover .project-card__title,
+  .project-card:focus-visible .project-card__title {
+    opacity: 1;
+  }
+
+  @media (max-width: 800px) {
+    .stills-index {
+      grid-template-columns: 1fr;
+      gap: var(--space-7);
+    }
+
+    .project-card,
+    .project-card:nth-child(4n + 1),
+    .project-card:nth-child(4n + 2),
+    .project-card:nth-child(4n + 3) {
+      grid-column: auto;
+      margin-top: 0;
+    }
+
+    .project-card::after {
+      opacity: 0.24;
+    }
+
+    .project-card__title {
+      opacity: 1;
+    }
+  }
+</style>
