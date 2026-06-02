@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "generate-proxies": "node scripts/generate-proxies.js"
+    "generate-proxies": "node scripts/generate-proxies.js",
+    "create-stills-project": "node scripts/create-stills-project.js"
   },
   "dependencies": {
     "astro": "^6.4.2"
