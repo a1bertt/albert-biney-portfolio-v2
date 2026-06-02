@@ -73,9 +73,13 @@ const youtubeUrl = "https://www.youtube.com/@AlbertBineyPhoto";
   }
 
   .info-content {
-    display: grid;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
     gap: clamp(24px, 4vw, 48px);
+    justify-content: center;
     max-width: 620px;
+    min-height: 100%;
   }
 
   .info-bio p {

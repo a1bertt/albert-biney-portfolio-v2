@@ -10,7 +10,7 @@ year: "2026"
 category: "stills"
 sortOrder: 1
 
-coverImage: "https://media.albertbiney.com/stills/example-project/cover.jpg"
+coverImage: "/media/stills/example-project/cover.jpg"
 
 # Optional
 client: "Example Client"
@@ -21,13 +21,13 @@ credits:
     name: "Albert Biney"
 
 images:
-  - "https://media.albertbiney.com/stills/example-project/01.jpg"
-  - "https://media.albertbiney.com/stills/example-project/02.jpg"
+  - "/media/stills/example-project/01.jpg"
+  - "/media/stills/example-project/02.jpg"
 
 seo:
   title: "Example Project | Albert Biney"
   description: "A short description of the stills project."
-  ogImage: "https://media.albertbiney.com/stills/example-project/cover.jpg"
+  ogImage: "/media/stills/example-project/cover.jpg"
 ---
 
 Optional project notes can go here.
@@ -35,8 +35,8 @@ Optional project notes can go here.
 
 ## Instructions
 
-1. Upload images to R2.
-2. Copy URLs.
+1. Add images to `public/media/stills/[slug]/`.
+2. Use direct `/media/stills/[slug]/...` paths in the project entry.
 3. Duplicate this template into `src/content/projects/[slug].md`.
 4. Update metadata.
 5. Run `npm run build`.

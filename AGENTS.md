@@ -91,11 +91,16 @@ Do not use Cormorant Garamond for navigation or large blocks of body text. Typog
 
 ## Media Rules
 
-Do not commit final high-resolution images or videos to the repository.
+For V1, serve portfolio media locally from `public/media/` using direct `/media/...` paths in content collection entries.
 
-Use Cloudflare Images URLs for final still image delivery. Use Cloudflare Stream URLs or embeds for final video delivery.
+Use this folder structure so a future R2 migration does not require reorganizing content:
 
-Local placeholder media may be used only when needed for layout work. Keep placeholders lightweight and replace final production media with Cloudflare URLs in content collection entries.
+- `public/media/stills/[project-slug]/cover.jpg`
+- `public/media/stills/[project-slug]/01.jpg`
+- `public/media/moving/[project-slug]/cover.jpg`
+- `public/media/moving/[project-slug]/thumbnail.jpg`
+
+Do not add image loaders, path generators, CDN wrappers, media host environment variables, or media service abstractions for V1.
 
 All meaningful images need descriptive alt text. Use empty alt text only for genuinely decorative imagery.
 

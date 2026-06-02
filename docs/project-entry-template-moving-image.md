@@ -10,22 +10,22 @@ year: "2026"
 category: "moving-image"
 sortOrder: 1
 
-coverImage: "https://media.albertbiney.com/moving/example-film/poster.jpg"
+coverImage: "/media/moving/example-film/cover.jpg"
 
 # Optional
 images:
-  - "https://media.albertbiney.com/moving/example-film/poster.jpg"
+  - "/media/moving/example-film/cover.jpg"
 
 videos:
   - title: "Example Film"
-    previewUrl: "https://media.albertbiney.com/moving/example-film/preview.mp4"
-    fullVideoUrl: "https://media.albertbiney.com/moving/example-film/full.mp4"
-    posterImage: "https://media.albertbiney.com/moving/example-film/poster.jpg"
+    previewUrl: "/media/moving/example-film/preview.mp4"
+    fullVideoUrl: "/media/moving/example-film/full.mp4"
+    posterImage: "/media/moving/example-film/cover.jpg"
 
 seo:
   title: "Example Film | Albert Biney"
   description: "A short description of the moving-image project."
-  ogImage: "https://media.albertbiney.com/moving/example-film/poster.jpg"
+  ogImage: "/media/moving/example-film/cover.jpg"
 ---
 
 Optional project notes can go here.
@@ -33,10 +33,10 @@ Optional project notes can go here.
 
 ## Instructions
 
-1. Export the poster image, preview video, and full video outside the repository.
-2. Upload the files to R2 under `/moving/[project-slug]/`.
-3. Copy the public URLs from `https://media.albertbiney.com`.
+1. Export the poster image, preview video, and full video.
+2. Add the files to `public/media/moving/[project-slug]/`.
+3. Use direct `/media/moving/[project-slug]/...` paths in the project entry.
 4. Duplicate this template into `src/content/projects/[slug].md`.
 5. Update the project metadata, video URLs, poster image, SEO fields, and `sortOrder`.
-6. Keep final video and image files out of GitHub.
+6. Keep file names predictable and lowercase.
 7. Run `npm run build`.
