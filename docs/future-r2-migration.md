@@ -38,7 +38,7 @@ in a future R2 bucket.
 ## Future Migration Steps
 
 1. Upload `public/images/stills/` contents to the future R2 bucket under `stills/`.
-2. Upload `public/media/moving/` contents to the future R2 bucket under `moving/`.
+2. Upload `public/moving/` contents to the future R2 bucket under `moving/`.
 3. Replace local path prefixes in content entries:
 
 ```text

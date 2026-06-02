@@ -11,12 +11,14 @@
     "preview": "astro preview",
     "astro": "astro",
     "generate-proxies": "node scripts/generate-proxies.js",
-    "create-stills-project": "node scripts/create-stills-project.js"
+    "create-stills-project": "node scripts/create-stills-project.js",
+    "create-moving-project": "node scripts/create-moving-project.js"
   },
   "dependencies": {
     "astro": "^6.4.2"
   },
   "devDependencies": {
+    "ffmpeg-static": "^5.3.0",
     "sharp": "^0.34.5"
   }
 }
