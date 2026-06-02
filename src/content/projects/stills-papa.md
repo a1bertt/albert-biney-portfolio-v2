@@ -14,6 +14,12 @@ images:
   - "/images/stills/papa/proxies/04.jpg"
   - "/images/stills/papa/proxies/05.jpg"
   - "/images/stills/papa/proxies/06.jpg"
+  - "/images/stills/papa/proxies/07.jpg"
+  - "/images/stills/papa/proxies/08.jpg"
+  - "/images/stills/papa/proxies/09.jpg"
+  - "/images/stills/papa/proxies/10.jpg"
+  - "/images/stills/papa/proxies/11.jpg"
+  - "/images/stills/papa/proxies/12.jpg"
 
 seo:
   title: "Papa | Albert Biney"

@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectMasonryGallery from "../../components/ProjectMasonryGallery.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects", ({ data }) => data.category === "stills");
@@ -37,15 +38,7 @@ const { title, year, client, credits, images } = project.data;
       )}
     </header>
 
-    <div class="project-images">
-      {
-        images.map((image, index) => (
-          <figure>
-            <img src={image} alt={`${title}, image ${index + 1}`} loading={index === 0 ? "eager" : "lazy"} />
-          </figure>
-        ))
-      }
-    </div>
+    <ProjectMasonryGallery images={images} projectTitle={title} />
   </article>
 </BaseLayout>
 
@@ -86,19 +79,9 @@ const { title, year, client, credits, images } = project.data;
     color: var(--muted);
   }
 
-  .project-images {
-    display: grid;
-    gap: 32px;
-    max-width: 960px;
-  }
-
-  .project-images figure {
-    margin: 0;
-  }
-
-  .project-images img {
-    display: block;
-    width: 100%;
-    height: auto;
+  @media (max-width: 720px) {
+    .project-page {
+      padding: var(--space-5) var(--layout-page-x) 80px;
+    }
   }
 </style>

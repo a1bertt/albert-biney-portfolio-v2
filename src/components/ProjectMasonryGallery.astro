@@ -1,0 +1,303 @@
+---
+interface Props {
+  images: string[];
+  projectTitle: string;
+}
+
+const { images, projectTitle } = Astro.props;
+---
+
+<div class="project-gallery-shell" data-project-gallery-root>
+  <div class="project-gallery" aria-label={`${projectTitle} gallery`} data-project-gallery>
+    {
+      images.map((image, index) => {
+        const alt = `${projectTitle}, image ${index + 1}`;
+
+        return (
+          <button
+            class="project-gallery-item"
+            type="button"
+            aria-label={`Open ${alt}`}
+            data-lightbox-src={image}
+            data-lightbox-alt={alt}
+          >
+            <img src={image} alt={alt} loading={index === 0 ? "eager" : "lazy"} decoding="async" />
+          </button>
+        );
+      })
+    }
+  </div>
+
+  <div
+    class="project-lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label={`${projectTitle} image preview`}
+    aria-hidden="true"
+    data-project-lightbox
+    hidden
+  >
+    <button class="project-lightbox__close" type="button" aria-label="Close image viewer" data-lightbox-close>
+      Close
+    </button>
+    <button class="project-lightbox__nav project-lightbox__nav--previous" type="button" aria-label="Previous image" data-lightbox-previous>
+      Previous
+    </button>
+    <img class="project-lightbox__image" src="" alt="" data-lightbox-image />
+    <button class="project-lightbox__nav project-lightbox__nav--next" type="button" aria-label="Next image" data-lightbox-next>
+      Next
+    </button>
+  </div>
+</div>
+
+<script>
+  const roots = document.querySelectorAll("[data-project-gallery-root]");
+
+  roots.forEach((root) => {
+    const lightbox = root.querySelector("[data-project-lightbox]");
+    const lightboxImage = root.querySelector("[data-lightbox-image]");
+    const closeButton = root.querySelector("[data-lightbox-close]");
+    const previousButton = root.querySelector("[data-lightbox-previous]");
+    const nextButton = root.querySelector("[data-lightbox-next]");
+    const items = Array.from(root.querySelectorAll("[data-lightbox-src]")).filter(
+      (item) => item instanceof HTMLElement
+    );
+    let activeTrigger = null;
+    let activeIndex = 0;
+
+    if (!(lightbox instanceof HTMLElement) || !(lightboxImage instanceof HTMLImageElement)) {
+      return;
+    }
+
+    const setScrollLock = (locked) => {
+      document.documentElement.classList.toggle("is-lightbox-open", locked);
+      document.body.classList.toggle("is-lightbox-open", locked);
+    };
+
+    const closeLightbox = () => {
+      lightbox.hidden = true;
+      lightbox.setAttribute("aria-hidden", "true");
+      lightboxImage.removeAttribute("src");
+      lightboxImage.alt = "";
+      setScrollLock(false);
+      document.removeEventListener("keydown", handleKeydown);
+
+      if (activeTrigger instanceof HTMLElement) {
+        activeTrigger.focus();
+      }
+
+      activeTrigger = null;
+    };
+
+    const showImage = (index) => {
+      const item = items[index];
+
+      if (!(item instanceof HTMLElement)) {
+        return;
+      }
+
+      const src = item.getAttribute("data-lightbox-src");
+      const alt = item.getAttribute("data-lightbox-alt") || "";
+
+      if (!src) {
+        return;
+      }
+
+      activeIndex = index;
+      lightboxImage.src = src;
+      lightboxImage.alt = alt;
+    };
+
+    const navigateLightbox = (direction) => {
+      const nextIndex = (activeIndex + direction + items.length) % items.length;
+      showImage(nextIndex);
+    };
+
+    function handleKeydown(event) {
+      if (lightbox.hidden) {
+        return;
+      }
+
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        navigateLightbox(1);
+      }
+
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        navigateLightbox(-1);
+      }
+    }
+
+    const openLightbox = (trigger, index) => {
+      const src = trigger.getAttribute("data-lightbox-src");
+
+      if (!src) {
+        return;
+      }
+
+      activeTrigger = trigger;
+      showImage(index);
+      lightbox.hidden = false;
+      lightbox.setAttribute("aria-hidden", "false");
+      setScrollLock(true);
+      document.addEventListener("keydown", handleKeydown);
+
+      if (closeButton instanceof HTMLElement) {
+        closeButton.focus();
+      }
+    };
+
+    items.forEach((item, index) => {
+      item.addEventListener("click", () => openLightbox(item, index));
+    });
+
+    if (closeButton instanceof HTMLElement) {
+      closeButton.addEventListener("click", closeLightbox);
+    }
+
+    if (previousButton instanceof HTMLElement) {
+      previousButton.addEventListener("click", () => navigateLightbox(-1));
+    }
+
+    if (nextButton instanceof HTMLElement) {
+      nextButton.addEventListener("click", () => navigateLightbox(1));
+    }
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+  });
+</script>
+
+<style>
+  :global(html.is-lightbox-open),
+  :global(body.is-lightbox-open) {
+    overflow: hidden;
+  }
+
+  .project-gallery-shell {
+    width: 100%;
+  }
+
+  .project-gallery {
+    column-count: 3;
+    column-gap: 12px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .project-gallery-item {
+    display: block;
+    width: 100%;
+    margin: 0 0 12px;
+    padding: 0;
+    overflow: hidden;
+    break-inside: avoid;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .project-gallery-item:focus-visible {
+    outline: 1px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+
+  .project-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+
+  .project-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(20px, 4vw, 48px);
+    background: rgba(0, 0, 0, 0.82);
+  }
+
+  .project-lightbox[hidden] {
+    display: none;
+  }
+
+  .project-lightbox__image {
+    display: block;
+    max-width: 85vw;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .project-lightbox__close,
+  .project-lightbox__nav {
+    position: fixed;
+    z-index: 1;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+    font-size: var(--type-nav-size);
+    letter-spacing: var(--type-letter-spaced);
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .project-lightbox__close {
+    top: clamp(16px, 3vw, 32px);
+    right: clamp(16px, 3vw, 32px);
+  }
+
+  .project-lightbox__nav {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .project-lightbox__nav--previous {
+    left: clamp(16px, 3vw, 32px);
+  }
+
+  .project-lightbox__nav--next {
+    right: clamp(16px, 3vw, 32px);
+  }
+
+  .project-lightbox__close:focus-visible,
+  .project-lightbox__nav:focus-visible {
+    outline: 1px solid #ffffff;
+    outline-offset: var(--space-2);
+  }
+
+  @media (max-width: 768px) {
+    .project-gallery {
+      column-count: 2;
+      column-gap: 8px;
+    }
+
+    .project-gallery-item {
+      margin-bottom: 8px;
+    }
+  }
+
+  @media (max-width: 300px) {
+    .project-gallery {
+      column-count: 1;
+    }
+  }
+</style>

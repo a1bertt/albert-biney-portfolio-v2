@@ -134,7 +134,7 @@ const projects = (await getCollection("projects", ({ data }) => data.category ==
     position: absolute;
     inset: 0;
     content: "";
-    background: rgba(0, 0, 0, 0.34);
+    background: rgba(0, 0, 0, 0.42);
     opacity: 0;
     transition: opacity var(--motion-fast);
   }
@@ -144,12 +144,15 @@ const projects = (await getCollection("projects", ({ data }) => data.category ==
     top: 50%;
     left: 50%;
     z-index: 1;
+    width: 80%;
     color: #ffffff;
-    font-size: var(--type-nav-size);
-    letter-spacing: var(--type-letter-spaced);
-    line-height: 1.2;
+    font-size: clamp(48px, 4.6vw, 64px);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1;
     text-align: center;
-    text-transform: uppercase;
+    text-transform: none;
+    word-break: normal;
     transform: translate(-50%, -50%);
     opacity: 0;
     transition: opacity var(--motion-fast);
@@ -190,6 +193,10 @@ const projects = (await getCollection("projects", ({ data }) => data.category ==
     .project-card:nth-child(even) {
       grid-column: 4 / span 5;
     }
+
+    .project-card__title {
+      font-size: clamp(42px, 5vw, 52px);
+    }
   }
 
   @media (max-width: 720px) {
@@ -216,6 +223,7 @@ const projects = (await getCollection("projects", ({ data }) => data.category ==
     }
 
     .project-card__title {
+      font-size: clamp(28px, 8vw, 36px);
       opacity: 1;
     }
   }
