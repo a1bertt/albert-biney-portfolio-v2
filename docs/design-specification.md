@@ -373,7 +373,7 @@ It should feel connected to the stills experience but introduce motion through a
 
 16.1 Moving Image Project Pages
 
-Moving image project pages should follow the same restraint as stills project pages. They may include one primary video, supporting stills, project title, year, optional client, and optional credits. V1 moving-image posters, thumbnails, and preview assets should be stored under `public/media/moving/` and referenced with direct `/media/moving/...` paths.
+Moving image project pages should follow the same restraint as stills project pages. They may include one primary video, supporting stills, project title, year, optional client, and optional credits. V1 moving-image posters, thumbnails, and preview assets should be stored under `public/moving/` and referenced with direct `/moving/...` paths.
 
 17. INFO Page Specification
 
@@ -481,9 +481,9 @@ Use a clear naming convention so media remains manageable.
 
 23.2 Local Moving Media Usage
 
-Add moving-image covers, thumbnails, posters, and preview assets to `public/media/moving/[project-slug]/`.
+Add moving-image covers, thumbnails, posters, and preview assets to `public/moving/[project-slug]/`.
 
-Use direct `/media/moving/[project-slug]/...` paths in moving-image project data.
+Use direct `/moving/[project-slug]/...` paths in moving-image project data.
 
 Autoplay previews must be muted and looped.
 
@@ -561,7 +561,7 @@ Add project page routes and image sequence rendering.
 
 Add lightbox behaviour.
 
-Add MOVING IMAGES page using local `/media/moving/...` sample paths.
+Add MOVING IMAGES page using local `/moving/...` sample paths.
 
 Add SEO metadata component.
 

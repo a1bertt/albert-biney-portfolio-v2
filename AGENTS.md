@@ -97,8 +97,8 @@ Use this folder structure so a future R2 migration does not require reorganizing
 
 - `public/images/stills/[project-slug]/cover.jpg`
 - `public/images/stills/[project-slug]/01.jpg`
-- `public/media/moving/[project-slug]/cover.jpg`
-- `public/media/moving/[project-slug]/thumbnail.jpg`
+- `public/moving/[project-slug]/cover.jpg`
+- `public/moving/[project-slug]/thumbnail.jpg`
 
 Do not add image loaders, path generators, CDN wrappers, media host environment variables, or media service abstractions for V1.
 
