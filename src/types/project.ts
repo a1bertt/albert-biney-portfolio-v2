@@ -5,7 +5,9 @@ export type Credit = {
 
 export type Video = {
   title?: string;
-  streamUrl: string;
+  previewUrl?: string;
+  fullVideoUrl?: string;
+  streamUrl?: string;
   posterImage?: string;
 };
 

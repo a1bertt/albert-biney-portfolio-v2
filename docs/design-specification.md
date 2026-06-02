@@ -87,11 +87,11 @@ Layout direction revised to use a fixed left-side vertical navigation system wit
 
 Project pages revised to include title, year, image sequence, optional client, and optional credits.
 
-Content model extended to include sortOrder, SEO metadata, Cloudflare image URLs, and optional video records.
+Content model extended to include sortOrder, SEO metadata, local media paths, and optional video records.
 
 Tailwind CSS removed from the technical stack in favour of custom CSS.
 
-Cloudflare Images and Cloudflare Stream added as V1 requirements rather than future enhancements.
+Local media delivery added as the V1 requirement, with Cloudflare/R2 reserved for a future migration.
 
 Lightbox behaviour approved and formalised.
 
@@ -107,7 +107,7 @@ The V1 website is organised around a fixed left-side vertical navigation system 
 
 The website should feel like a gallery wall, a campaign contact sheet stripped to essentials, and a printed lookbook translated into a digital environment. It should avoid startup styling, generic agency templates, decorative animations, faux-luxury effects, and over-explained creative language.
 
-Technically, the platform will be built with Astro, TypeScript, custom CSS, and minimal JavaScript. GitHub will hold source code. GitHub Pages will host the generated site. Cloudflare will manage DNS, CDN, SSL, image delivery through Cloudflare Images, and video delivery through Cloudflare Stream. The GitHub repository should not store final large image sets or final video files.
+Technically, the platform will be built with Astro, TypeScript, custom CSS, and minimal JavaScript. GitHub will hold source code. GitHub Pages will host the generated site. V1 media files will be served locally from `public/media/` using direct `/media/...` paths in content entries.
 
 3. Project Vision
 
@@ -373,7 +373,7 @@ It should feel connected to the stills experience but introduce motion through a
 
 16.1 Moving Image Project Pages
 
-Moving image project pages should follow the same restraint as stills project pages. They may include one primary video, supporting stills, project title, year, optional client, and optional credits. Videos should be embedded from Cloudflare Stream and should not be committed to the GitHub repository.
+Moving image project pages should follow the same restraint as stills project pages. They may include one primary video, supporting stills, project title, year, optional client, and optional credits. V1 moving-image posters, thumbnails, and preview assets should be stored under `public/media/moving/` and referenced with direct `/media/moving/...` paths.
 
 17. INFO Page Specification
 
@@ -465,55 +465,49 @@ Metadata should be generated from project data where possible.
 
 23. Media Infrastructure
 
-V1 uses Cloudflare for image and video hosting. This is a deliberate architecture decision. The GitHub repository should remain code-focused and should not grow into a media storage bucket.
+V1 uses local static media for image and video assets. Media should live under `public/media/` so the site is simple to maintain and the folder structure remains ready for a future external media migration.
 
-23.1 Cloudflare Images Usage
+23.1 Local Stills Media Usage
 
-Upload final stills project images to Cloudflare Images.
+Add stills project images to `public/media/stills/[project-slug]/`.
 
-Use Cloudflare delivery URLs in project data.
+Use direct `/media/stills/[project-slug]/...` paths in project data.
 
-Use variants for responsive sizing if configured.
+Keep filenames predictable, lowercase, and ordered.
 
-Keep GitHub free of final large image assets.
+Keep the folder structure identical to the future external media structure.
 
-Use a clear naming convention outside the codebase so media remains manageable.
+Use a clear naming convention so media remains manageable.
 
-23.2 Cloudflare Stream Usage
+23.2 Local Moving Media Usage
 
-Upload moving image content to Cloudflare Stream.
+Add moving-image covers, thumbnails, posters, and preview assets to `public/media/moving/[project-slug]/`.
 
-Use Stream embed or playback URLs in moving image project data.
+Use direct `/media/moving/[project-slug]/...` paths in moving-image project data.
 
 Autoplay previews must be muted and looped.
 
-Use Cloudflare Images poster frames where useful.
+Use local poster frames where useful.
 
-Do not commit final video files to GitHub.
+Keep file names predictable and lowercase.
 
-24. Cloudflare Architecture
+24. Future Media Migration
 
-The Cloudflare account and GitHub repository still need to be created. V1 implementation should include setup tasks for both. Cloudflare R2 is not required for V1 unless a general object-storage workflow becomes necessary later.
+Cloudflare R2 is not part of V1. The V1 folder structure should remain compatible with a future R2 migration.
 
-24.1 Cloudflare Setup Checklist
+24.1 Future R2 Migration Notes
 
-Create Cloudflare account.
+Current local path:
 
-Add custom domain to Cloudflare.
+```text
+/media/stills/project-name/01.jpg
+```
 
-Update domain nameservers at the domain registrar.
+Future R2 URL:
 
-Enable SSL/TLS and basic CDN protections.
-
-Enable Cloudflare Images.
-
-Enable Cloudflare Stream.
-
-Upload sample image and video assets.
-
-Copy delivery URLs into the Astro project data.
-
-Connect DNS records to GitHub Pages after deployment.
+```text
+https://media.albertbiney.com/stills/project-name/01.jpg
+```
 
 25. Content Models
 
@@ -541,13 +535,13 @@ Keep all global styling in src/styles.
 
 Keep documentation in docs.
 
-Do not commit large exported images, high-resolution scans, or video files.
+For V1, commit portfolio media intentionally under `public/media/` using the established folder structure.
 
-Use .gitignore to prevent accidental media commits.
+Avoid unrelated media files outside `public/media/`.
 
 28. Deployment Architecture
 
-The deployment flow should be simple enough to maintain without a complex backend. Astro produces a static site. GitHub Pages serves it. Cloudflare provides domain, SSL, CDN, and media delivery.
+The deployment flow should be simple enough to maintain without a complex backend. Astro produces a static site. GitHub Pages serves it, including local media from `public/media/`.
 
 29. Development Workflow
 
@@ -559,7 +553,7 @@ Create Astro project locally.
 
 Commit base project structure.
 
-Create initial project data with placeholder Cloudflare URLs or temporary placeholders.
+Create initial project data with local `/media/...` paths.
 
 Build FixedSidebar, STILLS grid, ProjectCard, and INFO page.
 
@@ -567,17 +561,17 @@ Add project page routes and image sequence rendering.
 
 Add lightbox behaviour.
 
-Add MOVING IMAGES page using Cloudflare Stream sample URLs.
+Add MOVING IMAGES page using local `/media/moving/...` sample paths.
 
 Add SEO metadata component.
 
 Deploy to GitHub Pages.
 
-Connect custom domain through Cloudflare.
+Connect custom domain.
 
 Test desktop, mobile, keyboard, and performance.
 
-Replace placeholders with final Cloudflare-hosted media.
+Replace placeholders with final local media files.
 
 30. Future Versions
 
@@ -603,15 +597,9 @@ GitHub account active.
 
 GitHub repository created.
 
-Cloudflare account created.
-
 Custom domain available and ready to add to Cloudflare.
 
-Cloudflare Images enabled.
-
-Cloudflare Stream enabled.
-
-Initial still images and video samples prepared for upload.
+Initial still images and video samples prepared for `public/media/`.
 
 32.2 Final V1 Page Routes
 
@@ -631,4 +619,4 @@ No top horizontal navbar should be used.
 
 32.4 Final V1 Summary
 
-Albert Biney Portfolio Platform V1 is a minimal, editorial, image-first photography portfolio. It uses a fixed left-side vertical navigation system, STILLS as the homepage, MOVING IMAGES as a video index following the same index logic as STILLS, and INFO as the photographer information and contact page. The system is built with Astro, TypeScript, custom CSS, GitHub Pages, Cloudflare Images, Cloudflare Stream, and Cloudflare DNS/CDN. It is designed to launch cleanly, remain easy to maintain, and scale into Vault, archive, CMS, and advanced media features later.
+Albert Biney Portfolio Platform V1 is a minimal, editorial, image-first photography portfolio. It uses a fixed left-side vertical navigation system, STILLS as the homepage, MOVING IMAGES as a video index following the same index logic as STILLS, and INFO as the photographer information and contact page. The system is built with Astro, TypeScript, custom CSS, GitHub Pages, and local static media under `public/media/`. It is designed to launch cleanly, remain easy to maintain, and scale into Vault, archive, CMS, and external media hosting later.

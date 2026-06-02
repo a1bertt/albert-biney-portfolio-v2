@@ -1,6 +1,8 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
+const mediaPath = z.string().regex(/^\/media\/(stills|moving)\//);
+
 const projects = defineCollection({
   loader: glob({
     pattern: "**/*.{md,mdx}",
@@ -12,7 +14,7 @@ const projects = defineCollection({
     year: z.string(),
     category: z.enum(["stills", "moving-image"]),
     sortOrder: z.number(),
-    coverImage: z.string(),
+    coverImage: mediaPath,
     client: z.string().optional(),
     credits: z
       .array(
@@ -22,20 +24,22 @@ const projects = defineCollection({
         })
       )
       .optional(),
-    images: z.array(z.string()),
+    images: z.array(mediaPath),
     videos: z
       .array(
         z.object({
           title: z.string().optional(),
-          streamUrl: z.string(),
-          posterImage: z.string().optional(),
+          previewUrl: mediaPath.optional(),
+          fullVideoUrl: mediaPath.optional(),
+          streamUrl: mediaPath.optional(),
+          posterImage: mediaPath.optional(),
         })
       )
       .optional(),
     seo: z.object({
       title: z.string(),
       description: z.string(),
-      ogImage: z.string(),
+      ogImage: mediaPath,
     }),
   }),
 });

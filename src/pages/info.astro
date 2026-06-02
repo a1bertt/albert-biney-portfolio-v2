@@ -2,42 +2,36 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const portraitImage = "/images/info-portrait-placeholder.svg";
-const email = "hello@albertbiney.com";
-const instagramUrl = "https://www.instagram.com/albertbiney/";
-const youtubeUrl = "https://www.youtube.com/@albertbiney";
+const email = "albertbineyphoto@gmail.com";
+const instagramUrl = "https://www.instagram.com/akmvisuals";
+const youtubeUrl = "https://www.youtube.com/@AlbertBineyPhoto";
 ---
 
 <BaseLayout
   title="Info | Albert Biney"
   description="Biography, contact, and professional context for photographer Albert Biney."
 >
-  <section class="info-page" aria-labelledby="info-title">
+  <section class="info-page" aria-label="Info">
     <figure class="info-portrait">
       <img src={portraitImage} alt="Portrait placeholder for Albert Biney" loading="eager" />
     </figure>
 
     <div class="info-content">
       <div class="info-bio">
-        <p class="info-kicker">INFO</p>
-        <h1 id="info-title">Albert Biney</h1>
         <p>
           Albert Biney is a photographer working across film and digital, with a focus on portraiture,
           fashion, and moving image.
-        </p>
-        <p>
-          His work is shaped by stillness, everyday spaces, controlled composition, and a precise use of
-          light and texture.
         </p>
       </div>
 
       <dl class="info-details" aria-label="Contact details">
         <div>
           <dt>Location</dt>
-          <dd>London, United Kingdom</dd>
+          <dd>Based in Manchester, UK. Available worldwide</dd>
         </div>
         <div>
           <dt>Availability</dt>
-          <dd>Available for editorial, fashion, portrait, and moving-image commissions.</dd>
+          <dd>Available for fashion editorial, campaigns, portraits, and film commissions.</dd>
         </div>
         <div>
           <dt>Email</dt>
@@ -45,11 +39,11 @@ const youtubeUrl = "https://www.youtube.com/@albertbiney";
         </div>
         <div>
           <dt>Instagram</dt>
-          <dd><a href={instagramUrl}>@albertbiney</a></dd>
+          <dd><a href={instagramUrl}>@akmvisuals</a></dd>
         </div>
         <div>
           <dt>YouTube</dt>
-          <dd><a href={youtubeUrl}>@albertbiney</a></dd>
+          <dd><a href={youtubeUrl}>@AlbertBineyPhoto</a></dd>
         </div>
       </dl>
     </div>
@@ -61,13 +55,13 @@ const youtubeUrl = "https://www.youtube.com/@albertbiney";
     display: grid;
     grid-template-columns: minmax(240px, 0.78fr) minmax(320px, 1fr);
     gap: clamp(48px, 8vw, 128px);
-    align-items: start;
+    align-items: center;
     max-width: 1180px;
     padding: clamp(40px, 6vw, 88px) var(--layout-page-x) clamp(72px, 10vw, 144px);
   }
 
   .info-portrait {
-    margin: clamp(48px, 8vw, 104px) 0 0;
+    margin: 0;
   }
 
   .info-portrait img {
@@ -79,25 +73,13 @@ const youtubeUrl = "https://www.youtube.com/@albertbiney";
   }
 
   .info-content {
-    display: grid;
-    gap: clamp(40px, 6vw, 80px);
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(24px, 4vw, 48px);
+    justify-content: center;
     max-width: 620px;
-  }
-
-  .info-kicker {
-    margin: 0 0 var(--space-5);
-    color: var(--muted);
-    font-size: var(--type-nav-size);
-    letter-spacing: var(--type-letter-spaced);
-    line-height: 1.2;
-    text-transform: uppercase;
-  }
-
-  .info-bio h1 {
-    margin: 0 0 var(--space-6);
-    font-size: clamp(32px, 4vw, 56px);
-    font-weight: 500;
-    line-height: 1;
+    min-height: 100%;
   }
 
   .info-bio p {
@@ -148,6 +130,7 @@ const youtubeUrl = "https://www.youtube.com/@albertbiney";
     .info-page {
       grid-template-columns: 1fr;
       gap: var(--space-7);
+      align-items: start;
     }
 
     .info-portrait {
