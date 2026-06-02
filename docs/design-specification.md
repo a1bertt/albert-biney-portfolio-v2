@@ -469,9 +469,9 @@ V1 uses local static media for image and video assets. Media should live under `
 
 23.1 Local Stills Media Usage
 
-Add stills project images to `public/media/stills/[project-slug]/`.
+Add stills project images to `public/images/stills/[project-slug]/`.
 
-Use direct `/media/stills/[project-slug]/...` paths in project data.
+Use direct `/images/stills/[project-slug]/...` paths in project data.
 
 Keep filenames predictable, lowercase, and ordered.
 
@@ -500,7 +500,7 @@ Cloudflare R2 is not part of V1. The V1 folder structure should remain compatibl
 Current local path:
 
 ```text
-/media/stills/project-name/01.jpg
+/images/stills/project-name/01.jpg
 ```
 
 Future R2 URL:

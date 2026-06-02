@@ -5,7 +5,7 @@ V1 serves portfolio media from local static files in `public/media/`.
 Current local URL:
 
 ```text
-/media/stills/project-name/01.jpg
+/images/stills/project-name/01.jpg
 ```
 
 Future R2 URL:
@@ -17,7 +17,7 @@ https://media.albertbiney.com/stills/project-name/01.jpg
 The folder structure should stay identical after the public `/media/` prefix:
 
 ```text
-public/media/stills/project-name/01.jpg
+public/images/stills/project-name/01.jpg
 ```
 
 maps to:
@@ -37,7 +37,7 @@ in a future R2 bucket.
 
 ## Future Migration Steps
 
-1. Upload `public/media/stills/` contents to the future R2 bucket under `stills/`.
+1. Upload `public/images/stills/` contents to the future R2 bucket under `stills/`.
 2. Upload `public/media/moving/` contents to the future R2 bucket under `moving/`.
 3. Replace local path prefixes in content entries:
 

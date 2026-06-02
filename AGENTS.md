@@ -95,8 +95,8 @@ For V1, serve portfolio media locally from `public/media/` using direct `/media/
 
 Use this folder structure so a future R2 migration does not require reorganizing content:
 
-- `public/media/stills/[project-slug]/cover.jpg`
-- `public/media/stills/[project-slug]/01.jpg`
+- `public/images/stills/[project-slug]/cover.jpg`
+- `public/images/stills/[project-slug]/01.jpg`
 - `public/media/moving/[project-slug]/cover.jpg`
 - `public/media/moving/[project-slug]/thumbnail.jpg`
 

@@ -1,7 +1,7 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
-const mediaPath = z.string().regex(/^\/media\/(stills|moving)\//);
+const mediaPath = z.string().regex(/^\/(images\/stills|media\/moving)\//);
 
 const projects = defineCollection({
   loader: glob({
