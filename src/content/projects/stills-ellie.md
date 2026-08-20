@@ -5,21 +5,21 @@ year: "2024"
 category: "stills"
 sortOrder: 3
 
-coverImage: "/images/stills/ellie/cover.jpg"
+coverImage: "https://media.albertbiney.com/stills/ellie/cover.jpg"
 
 images:
-  - "/images/stills/ellie/proxies/01.jpg"
-  - "/images/stills/ellie/proxies/02.jpg"
-  - "/images/stills/ellie/proxies/03.jpg"
-  - "/images/stills/ellie/proxies/04.jpg"
-  - "/images/stills/ellie/proxies/05.jpg"
-  - "/images/stills/ellie/proxies/06.jpg"
-  - "/images/stills/ellie/proxies/07.jpg"
+  - "https://media.albertbiney.com/stills/ellie/proxies/01.jpg"
+  - "https://media.albertbiney.com/stills/ellie/proxies/02.jpg"
+  - "https://media.albertbiney.com/stills/ellie/proxies/03.jpg"
+  - "https://media.albertbiney.com/stills/ellie/proxies/04.jpg"
+  - "https://media.albertbiney.com/stills/ellie/proxies/05.jpg"
+  - "https://media.albertbiney.com/stills/ellie/proxies/06.jpg"
+  - "https://media.albertbiney.com/stills/ellie/proxies/07.jpg"
 
 seo:
   title: "Ellie | Albert Biney"
   description: "Ellie."
-  ogImage: "/images/stills/ellie/cover.jpg"
+  ogImage: "https://media.albertbiney.com/stills/ellie/cover.jpg"
 ---
 
 Ellie.

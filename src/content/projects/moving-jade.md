@@ -5,19 +5,19 @@ year: "2024"
 category: "moving-image"
 sortOrder: 1
 
-coverImage: "/moving/jade/proxies/cover.jpg"
+coverImage: "https://media.albertbiney.com/moving-images/jade/proxies/cover.jpg"
 
 images: []
 videos:
   - title: "Jade"
-    previewUrl: "/moving/jade/proxies/preview.mp4"
-    fullVideoUrl: "/moving/jade/proxies/full.mp4"
-    posterImage: "/moving/jade/proxies/cover.jpg"
+    previewUrl: "https://media.albertbiney.com/moving-images/jade/proxies/preview.mp4"
+    fullVideoUrl: "https://media.albertbiney.com/moving-images/jade/proxies/full.mp4"
+    posterImage: "https://media.albertbiney.com/moving-images/jade/proxies/cover.jpg"
 
 seo:
   title: "Jade | Albert Biney"
   description: "Jade."
-  ogImage: "/moving/jade/proxies/cover.jpg"
+  ogImage: "https://media.albertbiney.com/moving-images/jade/proxies/cover.jpg"
 ---
 
 Jade.

@@ -1,7 +1,10 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
-const mediaPath = z.string().regex(/^\/(images\/stills|moving)\//);
+const mediaUrl = z
+  .string()
+  .url()
+  .regex(/^https:\/\/media\.albertbiney\.com\/(stills|moving-images)\//);
 
 const projects = defineCollection({
   loader: glob({
@@ -14,7 +17,7 @@ const projects = defineCollection({
     year: z.string(),
     category: z.enum(["stills", "moving-image"]),
     sortOrder: z.number(),
-    coverImage: mediaPath,
+    coverImage: mediaUrl,
     client: z.string().optional(),
     credits: z
       .array(
@@ -24,22 +27,22 @@ const projects = defineCollection({
         })
       )
       .optional(),
-    images: z.array(mediaPath),
+    images: z.array(mediaUrl),
     videos: z
       .array(
         z.object({
           title: z.string().optional(),
-          previewUrl: mediaPath.optional(),
-          fullVideoUrl: mediaPath.optional(),
-          streamUrl: mediaPath.optional(),
-          posterImage: mediaPath.optional(),
+          previewUrl: mediaUrl.optional(),
+          fullVideoUrl: mediaUrl.optional(),
+          streamUrl: mediaUrl.optional(),
+          posterImage: mediaUrl.optional(),
         })
       )
       .optional(),
     seo: z.object({
       title: z.string(),
       description: z.string(),
-      ogImage: mediaPath,
+      ogImage: mediaUrl,
     }),
   }),
 });
