@@ -10,9 +10,6 @@ coverImage: "https://media.albertbiney.com/stills/wyn/cover.jpg"
 images:
   - "https://media.albertbiney.com/stills/wyn/proxies/01.jpg"
   - "https://media.albertbiney.com/stills/wyn/proxies/02.jpg"
-  - "https://media.albertbiney.com/stills/wyn/proxies/03.jpg"
-  - "https://media.albertbiney.com/stills/wyn/proxies/04.jpg"
-  - "https://media.albertbiney.com/stills/wyn/proxies/05.jpg"
 
 seo:
   title: "Wyn | Albert Biney"

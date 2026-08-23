@@ -13,10 +13,6 @@ images:
   - "https://media.albertbiney.com/stills/samiswa/proxies/03.jpg"
   - "https://media.albertbiney.com/stills/samiswa/proxies/04.jpg"
   - "https://media.albertbiney.com/stills/samiswa/proxies/05.jpg"
-  - "https://media.albertbiney.com/stills/samiswa/proxies/06.jpg"
-  - "https://media.albertbiney.com/stills/samiswa/proxies/07.jpg"
-  - "https://media.albertbiney.com/stills/samiswa/proxies/08.jpg"
-  - "https://media.albertbiney.com/stills/samiswa/proxies/09.jpg"
 
 seo:
   title: "Samiswa | Albert Biney"

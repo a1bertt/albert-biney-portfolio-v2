@@ -11,8 +11,6 @@ images:
   - "https://media.albertbiney.com/stills/eunsol/proxies/01.jpg"
   - "https://media.albertbiney.com/stills/eunsol/proxies/02.jpg"
   - "https://media.albertbiney.com/stills/eunsol/proxies/03.jpg"
-  - "https://media.albertbiney.com/stills/eunsol/proxies/04-.jpg"
-  - "https://media.albertbiney.com/stills/eunsol/proxies/05.jpg"
 
 seo:
   title: "Eunsol | Albert Biney"

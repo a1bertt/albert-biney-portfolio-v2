@@ -14,12 +14,7 @@ images:
   - "https://media.albertbiney.com/stills/papa/proxies/04.jpg"
   - "https://media.albertbiney.com/stills/papa/proxies/05.jpg"
   - "https://media.albertbiney.com/stills/papa/proxies/06.jpg"
-  - "https://media.albertbiney.com/stills/papa/proxies/07.jpg"
-  - "https://media.albertbiney.com/stills/papa/proxies/08.jpg"
   - "https://media.albertbiney.com/stills/papa/proxies/09.jpg"
-  - "https://media.albertbiney.com/stills/papa/proxies/10.jpg"
-  - "https://media.albertbiney.com/stills/papa/proxies/11.jpg"
-  - "https://media.albertbiney.com/stills/papa/proxies/12.jpg"
 
 seo:
   title: "Papa | Albert Biney"

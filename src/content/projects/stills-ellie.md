@@ -13,8 +13,6 @@ images:
   - "https://media.albertbiney.com/stills/ellie/proxies/03.jpg"
   - "https://media.albertbiney.com/stills/ellie/proxies/04.jpg"
   - "https://media.albertbiney.com/stills/ellie/proxies/05.jpg"
-  - "https://media.albertbiney.com/stills/ellie/proxies/06.jpg"
-  - "https://media.albertbiney.com/stills/ellie/proxies/07.jpg"
 
 seo:
   title: "Ellie | Albert Biney"

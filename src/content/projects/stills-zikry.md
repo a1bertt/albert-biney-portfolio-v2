@@ -16,11 +16,6 @@ images:
   - "https://media.albertbiney.com/stills/zikry/proxies/06.jpg"
   - "https://media.albertbiney.com/stills/zikry/proxies/07.jpg"
   - "https://media.albertbiney.com/stills/zikry/proxies/08.jpg"
-  - "https://media.albertbiney.com/stills/zikry/proxies/09.jpg"
-  - "https://media.albertbiney.com/stills/zikry/proxies/10.jpg"
-  - "https://media.albertbiney.com/stills/zikry/proxies/11.jpg"
-  - "https://media.albertbiney.com/stills/zikry/proxies/12.jpg"
-  - "https://media.albertbiney.com/stills/zikry/proxies/13.jpg"
   - "https://media.albertbiney.com/stills/zikry/proxies/14.jpg"
   - "https://media.albertbiney.com/stills/zikry/proxies/15.jpg"
 
